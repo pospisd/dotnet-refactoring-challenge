@@ -46,3 +46,9 @@
 
 - Performed initial analysis and documentation. Defined goals, scope, and out-of-scope boundaries.  ~30min
 - Implemented snapshot-based tests for order processing to verify functional consistency. ~80min
+- Extracted responsibilities from `CustomerOrderProcessor` into dedicated methods ~20min
+
+
+## Notes
+
+- introduce serilog for logging
