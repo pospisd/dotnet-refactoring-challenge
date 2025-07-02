@@ -1,3 +1,5 @@
+using Microsoft.Data.SqlClient;
+
 namespace RefactoringChallenge;
 
 using System;
@@ -6,8 +8,17 @@ using System.Data.SqlClient;
 
 public class CustomerOrderProcessor
 {
+    private readonly ITimeProvider _timeProvider = new SystemTimeProvider();
     private readonly string _connectionString = "Server=localhost,1433;Database=refactoringchallenge;User ID=sa;Password=RCPassword1!;";
     
+    public CustomerOrderProcessor(){}
+    
+    internal CustomerOrderProcessor(string connectionString, ITimeProvider timeProvider)
+    {
+        _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString), "Connection string cannot be null.");
+        _timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider), "Time provider cannot be null.");
+    }
+
     /// <summary>
     /// Process all new orders for specific customer. Update discount and status.
     /// </summary>
@@ -131,7 +142,7 @@ public class CustomerOrderProcessor
                     discountPercent += 10;
                 }
 
-                int yearsAsCustomer = DateTime.Now.Year - customer.RegistrationDate.Year;
+                int yearsAsCustomer = _timeProvider.Now.Year - customer.RegistrationDate.Year;
                 if (yearsAsCustomer >= 5)
                 {
                     discountPercent += 5;
@@ -220,7 +231,7 @@ public class CustomerOrderProcessor
                     using (var command = new SqlCommand("INSERT INTO OrderLogs (OrderId, LogDate, Message) VALUES (@OrderId, @LogDate, @Message)", connection))
                     {
                         command.Parameters.AddWithValue("@OrderId", order.Id);
-                        command.Parameters.AddWithValue("@LogDate", DateTime.Now);
+                        command.Parameters.AddWithValue("@LogDate", _timeProvider.Now);
                         command.Parameters.AddWithValue("@Message", $"Order completed with {order.DiscountPercent}% discount. Total price: {order.TotalAmount}");
                         
                         command.ExecuteNonQuery();
@@ -241,7 +252,7 @@ public class CustomerOrderProcessor
                     using (var command = new SqlCommand("INSERT INTO OrderLogs (OrderId, LogDate, Message) VALUES (@OrderId, @LogDate, @Message)", connection))
                     {
                         command.Parameters.AddWithValue("@OrderId", order.Id);
-                        command.Parameters.AddWithValue("@LogDate", DateTime.Now);
+                        command.Parameters.AddWithValue("@LogDate", _timeProvider.Now);
                         command.Parameters.AddWithValue("@Message", "Order on hold. Some items are not on stock.");
                         
                         command.ExecuteNonQuery();

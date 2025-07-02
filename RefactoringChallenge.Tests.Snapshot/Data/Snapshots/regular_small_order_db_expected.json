@@ -1,0 +1,25 @@
+{
+  "Orders": [
+    {
+      "Id": 3,
+      "CustomerId": 2,
+      "Status": "Ready",
+      "TotalAmount": 784.00,
+      "DiscountPercent": 2.00,
+      "DiscountAmount": 16.00
+    }
+  ],
+  "Inventory": [
+    {
+      "ProductId": 2,
+      "StockQuantity": 199
+    }
+  ],
+  "Logs": [
+    {
+      "OrderId": 3,
+      "LogDate": "2025-07-02T12:00:00.0000000",
+      "Message": "Order completed with 2% discount. Total price: 784,0000"
+    }
+  ]
+}

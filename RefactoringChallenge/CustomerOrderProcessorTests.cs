@@ -1,3 +1,5 @@
+using Microsoft.Data.SqlClient;
+
 namespace RefactoringChallenge;
 
 using System.Data.SqlClient;
