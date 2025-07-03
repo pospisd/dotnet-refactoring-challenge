@@ -1,7 +1,12 @@
-﻿using Newtonsoft.Json;
-using Testcontainers.MsSql;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using RefactoringChallenge.Abstractions.Data;
+using RefactoringChallenge.Configuration;
+using RefactoringChallenge.Data;
+using RefactoringChallenge.Data.Repositories;
 using RefactoringChallenge.Tests.Snapshot.Providers;
+using Testcontainers.MsSql;
 
 namespace RefactoringChallenge.Tests.Snapshot;
 
@@ -45,20 +50,16 @@ public class SnapshotTests
     [Test]
     public void ProcessCustomerOrders_WithInvalidCustomerId_ThrowsArgumentException()
     {
-        var timeProvider = new FixedTimeProvider(new DateTime(2025, 07, 02, 12, 00, 00));
-        var processor = new CustomerOrderProcessor(_connectionString, timeProvider);
+        var processor = CreateProcessor(_connectionString);
         Assert.Throws<ArgumentException>(() => processor.ProcessCustomerOrders(0));
     }
 
     [Test]
-    public void ProcessCustomerOrders_CustomerNotFound_ThrowsException()
+    public void ProcessCustomerOrders_CustomerNotFound_ThrowsInvalidOperationException()
     {
-        var timeProvider = new FixedTimeProvider(new DateTime(2025, 07, 02, 12, 00, 00));
-        var processor = new CustomerOrderProcessor(_connectionString, timeProvider);
-        Assert.Throws<Exception>(() => processor.ProcessCustomerOrders(999));
+        var processor = CreateProcessor(_connectionString);
+        Assert.Throws<InvalidOperationException>(() => processor.ProcessCustomerOrders(999));
     }
-
-    
 
     [Test]
     public void Snapshot_OrderWithUnavailableStock()
@@ -162,11 +163,27 @@ public class SnapshotTests
             await command.ExecuteNonQueryAsync();
         }
     }
-    
+
+    private CustomerOrderProcessor CreateProcessor(string connstring)
+    {
+        var dbSettings = new DbSettings
+        {
+            ConnectionString = connstring
+        };
+
+        var options = Options.Create(dbSettings);
+        var timeProvider = new FixedTimeProvider(new DateTime(2025, 07, 02, 12, 00, 00));
+        var connectionFactory = new SqlConnectionFactory(options);
+        var unitOfWorkFactory = new SqlUnitOfWorkFactory(connectionFactory);
+        var repositoryFactory = new RepositoryFactory(timeProvider);
+
+        return new CustomerOrderProcessor(timeProvider, unitOfWorkFactory, repositoryFactory );
+    }
+
     private void RunSnapshotTest(int customerId, string snapshotName)
     {
-        var timeProvider = new FixedTimeProvider(new DateTime(2025, 07, 02, 12, 00, 00));
-        var processor = new CustomerOrderProcessor(_connectionString, timeProvider);
+
+        var processor = CreateProcessor(_connectionString);
         var orders = processor.ProcessCustomerOrders(customerId);
 
         var outputJson = JsonConvert.SerializeObject(orders, Formatting.Indented);

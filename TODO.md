@@ -47,8 +47,14 @@
 - Performed initial analysis and documentation. Defined goals, scope, and out-of-scope boundaries.  ~30min
 - Implemented snapshot-based tests for order processing to verify functional consistency. ~80min
 - Extracted responsibilities from `CustomerOrderProcessor` into dedicated methods ~20min
+- Refactored to use Repository pattern with Unit of Work and IDbConnectionFactory abstraction ~50min
 
 
 ## Notes
 
-- introduce serilog for logging
+- [] Consider introducing serilog for logging
+- [] Consider some form of locking or concurrency handling when reducing inventory stock
+- [] Consider applying the Null Object pattern for repository-returned entities
+- [] Consider replacing exceptions with a Result pattern (e.g. Customer not found)
+- [] Consider implementing batch processing for PendingOrders to improve performance
+- [] Consider using a more structured approach for handling order statuses

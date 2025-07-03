@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\RefactoringChallenge\DatabaseSchema.sql" Link="Data\DatabaseSchema.sql">
+    <None Include="..\RefactoringChallenge\Data\DatabaseSchema.sql" Link="Data\DatabaseSchema.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -1,4 +1,6 @@
-﻿namespace RefactoringChallenge.Tests.Snapshot.Providers;
+﻿using RefactoringChallenge.Abstractions;
+
+namespace RefactoringChallenge.Tests.Snapshot.Providers;
 
 public class FixedTimeProvider(DateTime fixedNow) : ITimeProvider
 {

@@ -7,6 +7,9 @@ DELETE FROM Inventory;
 DELETE FROM Products;
 DELETE FROM Customers;
 
+DBCC CHECKIDENT ('OrderItems', RESEED, 0);
+DBCC CHECKIDENT ('OrderLogs', RESEED, 0);
+
 INSERT INTO Customers (Id, Name, Email, IsVip, RegistrationDate) VALUES 
     (1, 'Joe Doe', 'joe.doe@example.com', 1, '2015-01-01'),     -- VIP, 10 let věrnosti
 (2, 'John Smith', 'john@example.com', 0, '2023-03-15'),     -- běžný, mladý účet

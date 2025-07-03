@@ -1,4 +1,4 @@
-namespace RefactoringChallenge;
+namespace RefactoringChallenge.Models;
 
 public class OrderItem
 {
