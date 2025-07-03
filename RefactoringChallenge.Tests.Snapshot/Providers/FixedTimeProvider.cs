@@ -1,4 +1,4 @@
-﻿using RefactoringChallenge.Abstractions;
+﻿using RefactoringChallenge.Abstractions.Data;
 
 namespace RefactoringChallenge.Tests.Snapshot.Providers;
 

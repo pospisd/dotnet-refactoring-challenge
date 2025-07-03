@@ -1,6 +1,6 @@
-﻿using RefactoringChallenge.Abstractions;
+﻿using RefactoringChallenge.Abstractions.Data;
 
-namespace RefactoringChallenge;
+namespace RefactoringChallenge.Data;
 
 internal class SystemTimeProvider : ITimeProvider
 {

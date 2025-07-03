@@ -48,6 +48,7 @@
 - Implemented snapshot-based tests for order processing to verify functional consistency. ~80min
 - Extracted responsibilities from `CustomerOrderProcessor` into dedicated methods ~20min
 - Refactored to use Repository pattern with Unit of Work and IDbConnectionFactory abstraction ~50min
+- Introduced DiscountCalculator service ~15min
 
 
 ## Notes
@@ -58,3 +59,5 @@
 - [] Consider replacing exceptions with a Result pattern (e.g. Customer not found)
 - [] Consider implementing batch processing for PendingOrders to improve performance
 - [] Consider using a more structured approach for handling order statuses
+- [] Consider implementing a caching layer for frequently accessed data
+- [] Extract DI config into shared method and add a test to verify container setup

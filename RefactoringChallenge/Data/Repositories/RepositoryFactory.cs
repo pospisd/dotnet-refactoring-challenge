@@ -1,5 +1,4 @@
-﻿using RefactoringChallenge.Abstractions;
-using RefactoringChallenge.Abstractions.Data;
+﻿using RefactoringChallenge.Abstractions.Data;
 using RefactoringChallenge.Abstractions.Data.Repositories;
 
 namespace RefactoringChallenge.Data.Repositories;

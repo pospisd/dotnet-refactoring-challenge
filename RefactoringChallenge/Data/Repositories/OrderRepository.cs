@@ -3,7 +3,6 @@ using RefactoringChallenge.Abstractions.Data.Repositories;
 using RefactoringChallenge.Models;
 using System.Data;
 using Dapper;
-using RefactoringChallenge.Abstractions;
 
 namespace RefactoringChallenge.Data.Repositories;
 

@@ -5,6 +5,8 @@ using RefactoringChallenge.Abstractions.Data;
 using RefactoringChallenge.Configuration;
 using RefactoringChallenge.Data;
 using RefactoringChallenge.Data.Repositories;
+using RefactoringChallenge.Services;
+using RefactoringChallenge.Services.Discounts;
 using RefactoringChallenge.Tests.Snapshot.Providers;
 using Testcontainers.MsSql;
 
@@ -51,7 +53,7 @@ public class SnapshotTests
     public void ProcessCustomerOrders_WithInvalidCustomerId_ThrowsArgumentException()
     {
         var processor = CreateProcessor(_connectionString);
-        Assert.Throws<ArgumentException>(() => processor.ProcessCustomerOrders(0));
+        Assert.Throws<ArgumentOutOfRangeException>(() => processor.ProcessCustomerOrders(0));
     }
 
     [Test]
@@ -176,8 +178,14 @@ public class SnapshotTests
         var connectionFactory = new SqlConnectionFactory(options);
         var unitOfWorkFactory = new SqlUnitOfWorkFactory(connectionFactory);
         var repositoryFactory = new RepositoryFactory(timeProvider);
+        var discountCalculator = new DiscountCalculator([
+            new VipDiscountRule(),
+            new LoyaltyDiscountRule(timeProvider),
+            new OrderAmountDiscountRule()
+        ]);
+        var orderService = new OrderProcessingService(discountCalculator);
 
-        return new CustomerOrderProcessor(timeProvider, unitOfWorkFactory, repositoryFactory );
+        return new CustomerOrderProcessor(unitOfWorkFactory, repositoryFactory, orderService );
     }
 
     private void RunSnapshotTest(int customerId, string snapshotName)

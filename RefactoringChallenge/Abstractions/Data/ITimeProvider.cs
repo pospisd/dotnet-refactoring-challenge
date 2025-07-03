@@ -1,4 +1,4 @@
-﻿namespace RefactoringChallenge.Abstractions;
+﻿namespace RefactoringChallenge.Abstractions.Data;
 
 public interface ITimeProvider
 {
