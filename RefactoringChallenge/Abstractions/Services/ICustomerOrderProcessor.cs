@@ -2,6 +2,10 @@ using RefactoringChallenge.Models;
 
 namespace RefactoringChallenge.Abstractions.Services;
 
+/// <summary>
+/// Defines the contract for processing customer orders, including handling pending orders
+/// and ensuring proper transaction management during the process.
+/// </summary>
 public interface ICustomerOrderProcessor
 {
     /// <summary>

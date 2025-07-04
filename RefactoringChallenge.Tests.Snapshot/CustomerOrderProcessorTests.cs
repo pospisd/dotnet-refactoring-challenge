@@ -7,7 +7,6 @@ using RefactoringChallenge.Data;
 using RefactoringChallenge.Data.Repositories;
 using RefactoringChallenge.Services;
 using RefactoringChallenge.Services.Discounts;
-using RefactoringChallenge.Tests.Snapshot.Providers;
 using Testcontainers.MsSql;
 
 namespace RefactoringChallenge.Tests.Snapshot;

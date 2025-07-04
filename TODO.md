@@ -36,11 +36,21 @@
 - Updating or producing user-facing documentation (e.g., README, API documentation).  
 
 ## Ideas / Extras (Optional)
+Most of the out-of-scope items could be considered for future iterations.
 
-- Most of the out-of-scope items could be considered for future iterations.  
-- Move hardcoded strings (SQL, statuses like `"Processed"`, `"OnHold"`) to constants or enums.  
-- Clean Git history to remove accidentally committed secrets (e.g., DB password).  
-- Add integration tests using a containerized test database (e.g., via Docker).  
+- [] Consider introducing Serilog for logging  
+- [] Consider some form of locking or concurrency handling when reducing inventory stock  
+- [] Consider applying the Null Object pattern for repository-returned entities  
+- [] Consider replacing exceptions with a Result pattern (e.g. Customer not found)  
+- [] Consider implementing batch processing for PendingOrders to improve performance  
+- [] Consider using a more structured approach for handling order statuses  
+- [] Consider implementing a caching layer for frequently accessed data  
+- [] Consider extracting DI config into a shared method and adding a test to verify container setup  
+- [] Consider solution cleanup and folder reorganization for better structure  
+- [] Consider moving hardcoded strings (e.g. SQL queries, status values like `"Processed"`, `"OnHold"`) into constants or enums  
+- [] Consider cleaning Git history to remove accidentally committed secrets  
+- [] Consider adding integration tests using a containerized test database
+
 
 ## Progress Log
 
@@ -49,15 +59,4 @@
 - Extracted responsibilities from `CustomerOrderProcessor` into dedicated methods ~20min
 - Refactored to use Repository pattern with Unit of Work and IDbConnectionFactory abstraction ~50min
 - Introduced DiscountCalculator service ~15min
-
-
-## Notes
-
-- [] Consider introducing serilog for logging
-- [] Consider some form of locking or concurrency handling when reducing inventory stock
-- [] Consider applying the Null Object pattern for repository-returned entities
-- [] Consider replacing exceptions with a Result pattern (e.g. Customer not found)
-- [] Consider implementing batch processing for PendingOrders to improve performance
-- [] Consider using a more structured approach for handling order statuses
-- [] Consider implementing a caching layer for frequently accessed data
-- [] Extract DI config into shared method and add a test to verify container setup
+- Implement comprehensive unit tests for solution ~40min

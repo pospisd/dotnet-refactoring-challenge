@@ -23,6 +23,7 @@
     </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="RefactoringChallenge.Tests" />
     <InternalsVisibleTo Include="RefactoringChallenge.Tests.Snapshot" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,9 @@
 namespace RefactoringChallenge.Models;
 
+/// <summary>
+/// Represents an order placed by a customer, containing details such as the order ID, customer ID, 
+/// order date, total amount, discount information, status, and associated order items.
+/// </summary>
 public class Order
 {
     public int Id { get; set; }
