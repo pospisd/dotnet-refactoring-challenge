@@ -1,5 +1,8 @@
-namespace RefactoringChallenge;
+namespace RefactoringChallenge.Models;
 
+/// <summary>
+/// 
+/// </summary>
 public class Product
 {
     public int Id { get; set; }

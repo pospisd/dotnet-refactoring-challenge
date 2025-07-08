@@ -1,5 +1,8 @@
-namespace RefactoringChallenge;
+namespace RefactoringChallenge.Models;
 
+/// <summary>
+/// 
+/// </summary>
 public class Customer
 {
     public int Id { get; set; }

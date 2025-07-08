@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 4,
+    "CustomerId": 3,
+    "OrderDate": "2025-04-14T00:00:00",
+    "TotalAmount": 42500.0000,
+    "DiscountPercent": 15.0,
+    "DiscountAmount": 7500.0000,
+    "Status": "OnHold",
+    "Items": [
+      {
+        "Id": 5,
+        "OrderId": 4,
+        "ProductId": 3,
+        "Quantity": 10,
+        "UnitPrice": 5000.00,
+        "Product": {
+          "Id": 3,
+          "Name": "Gold",
+          "Category": "T-Shirts",
+          "Price": 5000.00
+        }
+      }
+    ]
+  }
+]

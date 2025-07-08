@@ -1,5 +1,8 @@
-namespace RefactoringChallenge;
+namespace RefactoringChallenge.Models;
 
+/// <summary>
+/// Represents an item within an order, including details such as quantity, unit price, and associated product.
+/// </summary>
 public class OrderItem
 {
     public int Id { get; set; }

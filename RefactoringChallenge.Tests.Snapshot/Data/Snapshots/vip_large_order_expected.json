@@ -1,0 +1,63 @@
+[
+  {
+    "Id": 1,
+    "CustomerId": 1,
+    "OrderDate": "2025-04-10T00:00:00",
+    "TotalAmount": 190500.0000,
+    "DiscountPercent": 25.0,
+    "DiscountAmount": 63500.0000,
+    "Status": "Ready",
+    "Items": [
+      {
+        "Id": 1,
+        "OrderId": 1,
+        "ProductId": 1,
+        "Quantity": 10,
+        "UnitPrice": 25000.00,
+        "Product": {
+          "Id": 1,
+          "Name": "White",
+          "Category": "T-Shirts",
+          "Price": 25000.00
+        }
+      },
+      {
+        "Id": 2,
+        "OrderId": 1,
+        "ProductId": 2,
+        "Quantity": 5,
+        "UnitPrice": 800.00,
+        "Product": {
+          "Id": 2,
+          "Name": "Gray",
+          "Category": "T-Shirts",
+          "Price": 800.00
+        }
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "CustomerId": 1,
+    "OrderDate": "2025-04-12T00:00:00",
+    "TotalAmount": 1200.000,
+    "DiscountPercent": 20.0,
+    "DiscountAmount": 300.000,
+    "Status": "Ready",
+    "Items": [
+      {
+        "Id": 3,
+        "OrderId": 2,
+        "ProductId": 4,
+        "Quantity": 3,
+        "UnitPrice": 500.00,
+        "Product": {
+          "Id": 4,
+          "Name": "Black",
+          "Category": "T-Shirts",
+          "Price": 500.00
+        }
+      }
+    ]
+  }
+]

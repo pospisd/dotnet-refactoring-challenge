@@ -1,0 +1,25 @@
+{
+  "Orders": [
+    {
+      "Id": 4,
+      "CustomerId": 3,
+      "Status": "OnHold",
+      "TotalAmount": 42500.00,
+      "DiscountPercent": 15.00,
+      "DiscountAmount": 7500.00
+    }
+  ],
+  "Inventory": [
+    {
+      "ProductId": 3,
+      "StockQuantity": 5
+    }
+  ],
+  "Logs": [
+    {
+      "OrderId": 4,
+      "LogDate": "2025-07-02T12:00:00.0000000",
+      "Message": "Order on hold. Some items are not on stock."
+    }
+  ]
+}

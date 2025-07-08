@@ -1,0 +1,46 @@
+{
+  "Orders": [
+    {
+      "Id": 1,
+      "CustomerId": 1,
+      "Status": "Ready",
+      "TotalAmount": 190500.00,
+      "DiscountPercent": 25.00,
+      "DiscountAmount": 63500.00
+    },
+    {
+      "Id": 2,
+      "CustomerId": 1,
+      "Status": "Ready",
+      "TotalAmount": 1200.00,
+      "DiscountPercent": 20.00,
+      "DiscountAmount": 300.00
+    }
+  ],
+  "Inventory": [
+    {
+      "ProductId": 1,
+      "StockQuantity": 90
+    },
+    {
+      "ProductId": 2,
+      "StockQuantity": 195
+    },
+    {
+      "ProductId": 4,
+      "StockQuantity": 47
+    }
+  ],
+  "Logs": [
+    {
+      "OrderId": 1,
+      "LogDate": "2025-07-02T12:00:00.0000000",
+      "Message": "Order completed with 25% discount. Total price: 190500,0000"
+    },
+    {
+      "OrderId": 2,
+      "LogDate": "2025-07-02T12:00:00.0000000",
+      "Message": "Order completed with 20% discount. Total price: 1200,000"
+    }
+  ]
+}
